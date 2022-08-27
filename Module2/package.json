@@ -1,0 +1,36 @@
+{
+  
+  "name": "projetomodulo2",
+  
+  "version": "1.0.0",
+  
+  "main": "index.js",
+  
+  "scripts": {
+  
+    
+  "start": "nodemon index.js"
+  
+  },
+  
+  "author": "",
+  
+  "license": "ISC",
+  
+  "description": "",
+  
+  "dependencies": {
+  
+    
+  "express": "^4.18.1",
+  
+    
+  "mongoose": "^6.5.3",
+  
+    
+  "nodemon": "^2.0.19"
+  
+  },
+  
+  "type": "module"
+}
