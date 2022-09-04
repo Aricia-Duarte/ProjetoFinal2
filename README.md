@@ -97,11 +97,3 @@ mongoose: versão 6.5.3
 nodemon: versão 2.0.19
 
 
-
-
-
-
-
-
----
-⌨️ com ❤️ por [Armstrong Lohãns](https://gist.github.com/lohhans) 😊
