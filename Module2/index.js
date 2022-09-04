@@ -17,7 +17,7 @@ server.use (express.json());
 
 // rota inicial endpoint
 server.get('/', (req, res) => {
-   res.json({ message: 'Bem vindo a nossa API!'})
+   res.json({ message: 'Bem vindo a ReConnect'})
 })
 
 //Criação de dados
@@ -76,6 +76,48 @@ server.get('/product/:id', async (req, res) => {
    }
 })
 
+//Update (PUT / PATCH)
+server.patch('/product/:id', async (req, res) => {
+
+   const id = req.params.id
+   const {descricao, preco} = req.body 
+   const product = {
+      descricao,
+      preco
+   }
+   try {
+      const updateProduct = await BancoSchema.updateOne({_id:id}, product)
+      if (updateProduct.matchedCount === 0){
+         res.status(422).json({message:'O usuário não foi encontrado!'})
+         return
+      }
+      res.status(200).json(product)
+
+   } catch (error) {
+      res.status(500).json({error: error})
+   }
+})
+
+//Delete
+server.delete('/product/:id', async (req, res) => {
+
+   const id = req.params.id
+
+   const product = await BancoSchema.findOne({_id:id})
+
+   if(!product) {
+      res.status(422).json({message: 'Produto não encontrado!'})
+      return
+   }
+   try {
+      await BancoSchema.deleteOne({_id: id})
+      res.status(200).json({message: 'Produto removido com sucesso!' })
+
+   } catch (error) {
+      res.status(500).json({error: error})
+   
+   }
+})
 
 
 //PROMESSAS - Conexão com o Banco de dados
